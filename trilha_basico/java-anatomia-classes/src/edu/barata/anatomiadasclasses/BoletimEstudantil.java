@@ -1,3 +1,5 @@
+package edu.barata.anatomiadasclasses;
+
 public class BoletimEstudantil {
   public static void main(String[] args) {
     int mediaFinal = 5;
