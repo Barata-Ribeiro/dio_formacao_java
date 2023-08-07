@@ -25,6 +25,7 @@ replay_pid*
 
 # Others
 .vscode/*
+**/.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
