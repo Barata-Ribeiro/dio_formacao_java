@@ -1,4 +1,4 @@
-package edu.barata.switchcase;
+package condicional.edu.barata.switchcase;
 
 public class PlanoOperadoraComIfElse {
   public static void main(String[] args) {

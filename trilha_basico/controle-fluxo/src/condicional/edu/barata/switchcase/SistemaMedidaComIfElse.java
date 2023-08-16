@@ -1,4 +1,4 @@
-package edu.barata.switchcase;
+package condicional.edu.barata.switchcase;
 
 // Modo condicional if/else
 public class SistemaMedidaComIfElse {

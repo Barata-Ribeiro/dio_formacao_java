@@ -1,4 +1,4 @@
-package edu.barata.condicionalcomposta;
+package condicional.edu.barata.condicionalcomposta;
 
 // ResultadoEscolar.java
 public class ResultadoEscolar {

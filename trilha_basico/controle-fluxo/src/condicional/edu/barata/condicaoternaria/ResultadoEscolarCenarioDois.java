@@ -1,4 +1,4 @@
-package edu.barata.condicaoternaria;
+package condicional.edu.barata.condicaoternaria;
 
 // Cenário 2
 public class ResultadoEscolarCenarioDois {

@@ -1,4 +1,4 @@
-package edu.barata.condicionalencadeada;
+package condicional.edu.barata.condicionalencadeada;
 
 // ResultadoEscolar.java
 public class ResultadoEscolar {
