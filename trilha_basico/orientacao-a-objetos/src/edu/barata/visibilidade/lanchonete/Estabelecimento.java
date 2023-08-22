@@ -26,16 +26,11 @@ public class Estabelecimento {
     // ações que não precisam estarem disponíveis para toda a aplicação
     almoxarife.controlarEntrada();
     almoxarife.controlarSaida();
-    // ação que somente o seu pacote cozinha precisa conhecer (default)
-    almoxarife.entregarIngredientes();
-    almoxarife.trocarGas();
 
     Atendente atendente = new Atendente();
     atendente.pegarLancheCozinha();
     atendente.receberPagamento();
     atendente.servindoMesa();
-    // ação que somente o seu pacote cozinha precisa conhecer (default)
-    atendente.trocarGas();
 
     Cliente cliente = new Cliente();
     cliente.escolherLanche();
