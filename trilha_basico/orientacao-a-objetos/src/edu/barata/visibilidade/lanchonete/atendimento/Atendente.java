@@ -2,11 +2,12 @@ package edu.barata.visibilidade.lanchonete.atendimento;
 
 public class Atendente {
   public void servindoMesa() {
-    // ...?
+    pegarLancheCozinha();
+    pegarPedidoBalcao();
     System.out.println("SERVINDO A MESA");
   }
 
-  public void pegarLancheCozinha() {
+  private void pegarLancheCozinha() {
     System.out.println("PEGANDO O LANCHE NA COZINHA");
   }
 
@@ -18,7 +19,7 @@ public class Atendente {
     System.out.println("ATENDENTE TROCANDO O GÁS");
   }
 
-  public void pegarPedidoBalcao() {
+  private void pegarPedidoBalcao() {
     System.out.println("PEGANDO O PEDIDO NO BALCÃO");
   }
 }
