@@ -1,4 +1,4 @@
-package edu.barata.visibilidade.lanchonete;
+package edu.barata.visibilidade.lanchonete.atendimento.cozinha;
 
 public class Almoxarife {
   public void controlarEntrada() {

@@ -1,5 +1,10 @@
 package edu.barata.visibilidade.lanchonete;
 
+import edu.barata.visibilidade.lanchonete.area.cliente.Cliente;
+import edu.barata.visibilidade.lanchonete.atendimento.Atendente;
+import edu.barata.visibilidade.lanchonete.atendimento.cozinha.Almoxarife;
+import edu.barata.visibilidade.lanchonete.atendimento.cozinha.Cozinheiro;
+
 public class Estabelecimento {
   public static void main(String[] args) {
     Cozinheiro cozinheiro = new Cozinheiro();

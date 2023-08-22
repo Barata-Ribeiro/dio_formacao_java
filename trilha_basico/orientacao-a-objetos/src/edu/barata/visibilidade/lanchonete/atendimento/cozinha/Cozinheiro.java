@@ -1,4 +1,6 @@
-package edu.barata.visibilidade.lanchonete;
+package edu.barata.visibilidade.lanchonete.atendimento.cozinha;
+
+import edu.barata.visibilidade.lanchonete.atendimento.Atendente;
 
 public class Cozinheiro {
   // pode ser default

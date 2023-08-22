@@ -1,4 +1,4 @@
-package edu.barata.visibilidade.lanchonete;
+package edu.barata.visibilidade.lanchonete.area.cliente;
 
 public class Cliente {
   public void escolherLanche() {
