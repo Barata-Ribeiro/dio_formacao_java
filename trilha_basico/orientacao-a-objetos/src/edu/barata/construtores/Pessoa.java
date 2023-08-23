@@ -5,6 +5,13 @@ public class Pessoa {
   private String cpf;
   private String endereco;
 
+  // método construtor
+  // o nome deverá ser igual ao nome da classe
+  public Pessoa(String cpf, String nome) {
+    this.cpf = cpf;
+    this.nome = nome;
+  }
+
   public String getNome() {
     return nome;
   }
@@ -17,8 +24,8 @@ public class Pessoa {
     return endereco;
   }
 
-  public void setEndereco(String endereco) {
-    this.endereco = endereco;
+  public void setEndereco(String newEndereco) {
+    this.endereco = newEndereco;
   }
   // ...
   // setters de nome e cpf ?

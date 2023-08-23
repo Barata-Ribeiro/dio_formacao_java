@@ -3,7 +3,7 @@ package edu.barata.construtores;
 public class SistemaCadastro {
   public static void main(String[] args) {
     // criamos uma pessoa no sistema
-    Pessoa marcos = new Pessoa();
+    Pessoa marcos = new Pessoa("069.781.850-00", "Marcos");
 
     // definimos o endereço de marcos
     marcos.setEndereco("RUA DAS MARIAS");
@@ -12,6 +12,6 @@ public class SistemaCadastro {
 
     // imprimindo o marcos sem o nome e cpf
 
-    System.out.println(marcos.getNome() + "-" + marcos.getCpf());
+    System.out.println(marcos.getNome() + " - " + marcos.getCpf());
   }
 }
