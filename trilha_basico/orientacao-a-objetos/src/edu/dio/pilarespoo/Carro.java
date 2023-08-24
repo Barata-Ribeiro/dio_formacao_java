@@ -1,6 +1,7 @@
 package edu.dio.pilarespoo;
 
 public class Carro extends Veiculo {
+  @Override
   public void ligar() {
     confereEnergia();
     confereTemperaturaPneus();
