@@ -1,4 +1,4 @@
-package edu.dio.praticainterface;
+package edu.dio.praticainterface.equipamentos.digitalizadora;
 
 public class Digitalizadora {
   public void digitalizar() {

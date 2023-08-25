@@ -1,4 +1,4 @@
-package edu.dio.praticainterface;
+package edu.dio.praticainterface.equipamentos.copiadora;
 
 public class Copiadora {
   public void copiar() {
