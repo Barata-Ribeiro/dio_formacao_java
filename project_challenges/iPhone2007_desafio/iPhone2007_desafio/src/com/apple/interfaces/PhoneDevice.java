@@ -5,5 +5,5 @@ public interface PhoneDevice {
 
   void pickUp();
 
-  void voiceMessage(String message);
+  void voiceMessage(String phoneNumber, String message);
 }
