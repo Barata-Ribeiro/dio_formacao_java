@@ -96,4 +96,8 @@ public class iPhone implements InternetBrowser, MusicPlayer, PhoneDevice {
     photoUtils.selectPhoto(photoName);
   }
 
+  public void listPhotos() {
+    photoUtils.listPhotos();
+  }
+
 }

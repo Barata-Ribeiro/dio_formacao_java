@@ -38,4 +38,11 @@ public class PhotoUtils {
     }
     System.out.println("Photo not found: " + photoName);
   }
+
+  public void listPhotos() {
+    System.out.println("List of photos:");
+    for (int i = 0; i < photoCount; i++) {
+      System.out.println(photoDatabase[i]);
+    }
+  }
 }
