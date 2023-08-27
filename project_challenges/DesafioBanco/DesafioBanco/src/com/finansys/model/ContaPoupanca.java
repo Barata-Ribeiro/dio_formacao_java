@@ -1,3 +1,4 @@
+package com.finansys.model;
 public class ContaPoupanca extends Conta {
 
   public ContaPoupanca(Cliente cliente) {
