@@ -3,5 +3,7 @@ public interface InterfaceConta {
 
   void depositar(double valor);
 
-  void transferir(Conta contaDestino, double valor);
+  void transferir(InterfaceConta contaDestino, double valor);
+
+  void imprimirExtrato();
 }
