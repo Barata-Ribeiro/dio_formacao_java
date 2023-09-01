@@ -10,13 +10,14 @@ public class ListaEncadeada<T> {
 
   public void add(T conteudo) {
     No<T> novoNo = new No<T>(conteudo);
+
     if (this.isEmpty()) {
       this.referenciaEntrada = novoNo;
       return;
     }
 
     No<T> noAuxiliar = this.referenciaEntrada;
-    for (int i = 0; i < this.size(); i += 1) {
+    for (int i = 0; i < size() - 1; i += 1) {
       noAuxiliar = noAuxiliar.getProximoNo();
     }
 
@@ -34,7 +35,7 @@ public class ListaEncadeada<T> {
     No<T> noAuxiliar = this.referenciaEntrada;
     No<T> noRetorno = null;
 
-    for (int i = 0; i < this.size(); i += 1) {
+    for (int i = 0; i <= index; i += 1) {
       noRetorno = noAuxiliar;
       noAuxiliar = noAuxiliar.getProximoNo();
     }
