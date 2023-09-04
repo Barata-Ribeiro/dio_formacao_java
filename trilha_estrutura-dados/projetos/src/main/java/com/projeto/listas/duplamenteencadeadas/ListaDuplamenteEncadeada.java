@@ -53,6 +53,25 @@ public class ListaDuplamenteEncadeada<T> {
     tamanhoLista += 1;
   }
 
+  public void remove(int index) {
+    if (index == 0) {
+      this.primeiroNo = this.primeiroNo.getNoProximo();
+      if (this.primeiroNo != null) {
+        this.primeiroNo.setNoAnterior(null);
+      }
+    } else {
+      NoDuplo<T> noAuxiliar = getNo(index);
+      noAuxiliar.getNoAnterior().setNoProximo(noAuxiliar.getNoProximo());
+      if (noAuxiliar != this.ultimoNo) {
+        noAuxiliar.getNoProximo().setNoAnterior(noAuxiliar.getNoAnterior());
+      } else {
+        this.ultimoNo = noAuxiliar;
+      }
+    }
+
+    this.tamanhoLista -= 1;
+  }
+
   private NoDuplo<T> getNo(int index) {
     NoDuplo<T> noAuxiliar = this.primeiroNo;
 
@@ -65,6 +84,22 @@ public class ListaDuplamenteEncadeada<T> {
 
   public int size() {
     return this.tamanhoLista;
+  }
+
+  @Override
+  public String toString() {
+    String strRetorno = "";
+
+    NoDuplo<T> noAuxiliar = this.primeiroNo;
+
+    for (int i = 0; i < size(); i += 1) {
+      strRetorno += "[No{conteudo=" + noAuxiliar.getConteudo() + "}] --->";
+      noAuxiliar = noAuxiliar.getNoProximo();
+    }
+
+    strRetorno += "Null";
+
+    return strRetorno;
   }
 
 }
