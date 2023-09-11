@@ -1,4 +1,4 @@
-package com.projeto.equalshashcode;
+package com.projeto.implementacoesprincipais.equalshashcode;
 
 public class Carro {
 

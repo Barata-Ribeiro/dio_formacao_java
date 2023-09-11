@@ -1,4 +1,4 @@
-package com.projeto.equalshashcode;
+package com.projeto.implementacoesprincipais.equalshashcode;
 
 import java.util.ArrayList;
 import java.util.List;
