@@ -1,6 +1,9 @@
 package com.trilhacollections.list;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ExemploList {
 
@@ -44,6 +47,88 @@ public class ExemploList {
     System.out.println("Exiba todas as notas na ordem em que foram informados: ");
     for (Double nota : notas)
       System.out.print(nota + " -- ");
+
+    System.out.println();
+    System.out.println();
+
+    System.out.println("Exiba a terceira nota adicionada: " + notas.get(2));
+    System.out.println(notas.toString());
+
+    System.out.println();
+
+    System.out.println("Exiba a menor nota: " + Collections.min(notas));
+    System.out.println("Exiba a maior nota: " + Collections.max(notas));
+
+    System.out.println();
+
+    Iterator<Double> iterator = notas.iterator();
+    Double soma = 0d;
+    while (iterator.hasNext()) {
+      Double next = iterator.next();
+      soma += next;
+    }
+    System.out.println("Exiba a soma dos valores: " + soma);
+
+    System.out.println("Exiba a média das notas: " + (soma / notas.size()));
+
+    System.out.println();
+
+    System.out.println("Remova a nota 0: ");
+    notas.remove(0d);
+    System.out.println(notas.toString());
+
+    System.out.println("Remova a nota da posição 0");
+    notas.remove(0);
+    System.out.println(notas.toString());
+
+    System.out.println();
+
+    System.out.println("Remova as notas menores que 7 e exiba a lista: ");
+    Iterator<Double> iterator2 = notas.iterator();
+    while (iterator2.hasNext()) {
+      Double next = iterator2.next();
+      if (next < 7)
+        iterator2.remove();
+    }
+    System.out.println(notas.toString());
+
+    System.out.println();
+
+    // System.out.println("Apague toda a lista");
+    // notas.clear();
+    // System.out.println(notas.toString());
+    System.out.println("Confira se a lista está vazia: " + notas.isEmpty());
+
+    System.out.println();
+
+    /*
+     * Para você: Resolva esses exercícios utilizando os métodos da implementação
+     * LinkedList:
+     * 
+     * System.out.println("Crie uma lista chamada notas2 " +
+     * "e coloque todos os elementos da list Arraylist nessa nova lista: ");
+     * 
+     * System.out.println("Mostre a primeira nota da nova lista sem removê-lo: ");
+     * 
+     * System.out.println("Mostre a primeira nota da nova lista removendo-o: ");
+     */
+
+    System.out.println("Crie uma lista chamada notas2 " +
+        "e coloque todos os elementos da list Arraylist nessa nova lista: ");
+    LinkedList<Double> notas2 = new LinkedList<>();
+    notas2.addAll(notas);
+    System.out.println(notas2.toString());
+
+    System.out.println("Mostre a primeira nota da nova lista sem removê-lo: ");
+    System.out.println("Primeira nota: " + notas2.getFirst());
+    System.out.println(notas2.toString());
+
+    System.out.println();
+
+    System.out.println("Mostre a primeira nota da nova lista removendo-o: ");
+    System.out.println("Removendo nota: " + notas2.removeFirst());
+    System.out.println(notas2.toString());
+
   }
 
 }
