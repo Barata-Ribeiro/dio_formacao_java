@@ -34,20 +34,25 @@ public class ExemploOrdenacaoList {
     Collections.shuffle(meusGatos);
     System.out.println("Gatinhos: " + meusGatos);
     System.out.println();
-    
+
     System.out.println("--\tOrdem Natural (Nome)\t---");
     Collections.sort(meusGatos);
     System.out.println("Gatinhos: " + meusGatos);
     System.out.println();
 
     System.out.println("--\tOrdem Idade\t---");
+    Collections.sort(meusGatos, new ComparatorIdade());
+    System.out.println("Gatinhos: " + meusGatos);
     System.out.println();
 
     System.out.println("--\tOrdem cor\t---");
+    Collections.sort(meusGatos, new ComparatorCor());
+    System.out.println("Gatinhos: " + meusGatos);
     System.out.println();
 
     System.out.println("--\tOrdem Nome/Cor/Idade\t---");
-
+    Collections.sort(meusGatos, new ComparatorNomeCorIdade());
+    System.out.println("Gatinhos: " + meusGatos);
   }
 
 }
@@ -95,5 +100,36 @@ class Gato implements Comparable<Gato> {
   @Override
   public int compareTo(Gato gatinho) {
     return this.getNome().compareToIgnoreCase(gatinho.getNome());
+  }
+}
+
+class ComparatorIdade implements Comparator<Gato> {
+  @Override
+  public int compare(Gato gatinho1, Gato gatinho2) {
+    return Integer.compare(gatinho1.getIdade(), gatinho2.getIdade());
+  }
+}
+
+class ComparatorCor implements Comparator<Gato> {
+
+  @Override
+  public int compare(Gato gatinho1, Gato gatinho2) {
+    return gatinho1.getCor().compareToIgnoreCase(gatinho2.getCor());
+  }
+}
+
+class ComparatorNomeCorIdade implements Comparator<Gato> {
+
+  @Override
+  public int compare(Gato gatinho1, Gato gatinho2) {
+    int nomeCompare = gatinho1.getNome().compareToIgnoreCase(gatinho2.getNome());
+    if (nomeCompare != 0)
+      return nomeCompare;
+
+    int corCompare = gatinho1.getCor().compareToIgnoreCase(gatinho2.getCor());
+    if (corCompare != 0)
+      return corCompare;
+
+    return Integer.compare(gatinho1.getIdade(), gatinho2.getIdade());
   }
 }
