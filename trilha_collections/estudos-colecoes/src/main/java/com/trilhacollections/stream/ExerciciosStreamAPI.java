@@ -23,18 +23,34 @@ public class ExerciciosStreamAPI {
     System.out.println();
 
     System.out.println("Transforme esta lista de String em uma lista de números inteiros.");
-    List<Integer> numerosAleatorios2 = numerosAleatorios.stream()
+    List<Integer> listaNumerosInteiros = numerosAleatorios.stream()
         .map(Integer::parseInt)
         .collect(Collectors.toList());
-    numerosAleatorios2.forEach(System.out::println);
+    listaNumerosInteiros.forEach(System.out::println);
 
     System.out.println();
 
     System.out.println("Pegue os números pares e maiores que 2 e coloque em uma lista:");
+    List<Integer> listaParesMaioresQueDois = numerosAleatorios.stream()
+        .map(Integer::parseInt)
+        .filter(i -> i % 2 == 0 && i > 2)
+        .collect(Collectors.toList());
+    listaParesMaioresQueDois
+        .forEach(System.out::println);
+
+    System.out.println();
 
     System.out.println("Mostre a média dos números: ");
+    numerosAleatorios.stream()
+        .mapToInt(Integer::parseInt)
+        .average()
+        .ifPresent(System.out::println);
 
     System.out.println("Remova os valores ímpares: ");
+    listaNumerosInteiros.removeIf(integer -> integer % 2 != 0);
+    System.out.println(listaNumerosInteiros);
+
+    System.out.println();
 
     // Para você
     System.out.println("Ignore os 3 primeiros elementos da lista e imprima o restante:");
