@@ -1,7 +1,10 @@
 package com.trilhacollections.stream;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class ExerciciosStreamAPI {
@@ -54,18 +57,56 @@ public class ExerciciosStreamAPI {
 
     // Para você
     System.out.println("Ignore os 3 primeiros elementos da lista e imprima o restante:");
+    numerosAleatorios.stream()
+        .map(Integer::parseInt)
+        .skip(3)
+        .forEach(System.out::println);
 
-    System.out.println("Retirando os números repetidos da lista, quantos números ficam? ");
+    System.out.println();
+
+    System.out.print("Retirando os números repetidos da lista, quantos números ficam? ");
+    System.out.println(numerosAleatorios.stream()
+        .map(Integer::parseInt)
+        .distinct()
+        .count());
+
+    System.out.println();
 
     System.out.print("Mostre o menor valor da lista: ");
+    listaNumerosInteiros.stream()
+        .mapToInt(Integer::intValue)
+        .min()
+        .ifPresent(System.out::println);
 
     System.out.print("Mostre o maior valor da lista: ");
+    listaNumerosInteiros.stream()
+        .mapToInt(Integer::intValue)
+        .max()
+        .ifPresent(System.out::println);
 
-    System.out.println("Pegue apenas os números pares e some: ");
+    System.out.println();
+
+    System.out.print("Pegue apenas os números pares e some: ");
+    System.out.println(numerosAleatorios.stream()
+        .map(Integer::parseInt)
+        .filter(i -> i % 2 == 0)
+        .mapToInt(Integer::intValue)
+        .sum());
+
+    System.out.println();
 
     System.out.println("Mostre a lista na ordem númerica: ");
+    List<Integer> numerosOrdemNumerica = listaNumerosInteiros.stream()
+        .sorted(Comparator.naturalOrder())
+        .collect(Collectors.toList());
+    System.out.println(numerosOrdemNumerica);
+
+    System.out.println();
 
     System.out.println("Agrupe os valores ímpares múltiplos de 3 ou de 5:");
+    Map<Boolean, List<Integer>> valoresImparesMultiplosDe3E5 = listaNumerosInteiros.stream()
+        .collect(Collectors.groupingBy(i -> (i % 3 == 0 || i % 5 == 0)));
+    System.out.println(valoresImparesMultiplosDe3E5);
   }
 
 }
