@@ -14,23 +14,42 @@ application {
     mainClass = 'Task.Types.App'
 }
 
-// task deleteBuild (type: Delete) {
-//     mustRunAfter = ["copyBuild", "zipReleaseToTestTeam"]
-//     delete 'build'
-// }
+// TASKS CUSTOMS
 
-// task copyBuild (type: Copy) {
-//     from 'build'
-//     into '../Release'
-// }
+task deleteBuild(type: Delete) {
+    mustRunAfter = ["copyBuild", "zipReleaseToTestTeam"]
+    delete "build"
 
-// task zipReleaseToTestTeam (type: Zip) {
-//     baseName = 'ExecutableToTestTeam'
-//     destinationDir = file('../ExecutableToTestTeam')
-//     from 'build/distributions'
-// }
+    doLast {
+        println("Executando a tarefa 'deleteBuild': Removendo a pasta 'build'.")
+    }
+}
 
-// task generateRelease {
-//     dependsOn = ["build", "test"]
-//     finalizedBy = ["copyBuild", "zipReleaseToTestTeam", "deleteBuild"]
-// }
+task copyBuild(type: Copy) {
+    from "build"
+    into "../Release"
+
+    doLast {
+        println("Executando a tarefa 'copyBuild': Copiando o conteudo de 'build' para '../Release'.")
+    }
+}
+
+task zipReleaseToTestTeam(type: Zip) {
+    mustRunAfter "copyBuild"
+    from "../Release/distributions"
+    archiveFileName = "zipReleaseToTestTeam.zip"
+    destinationDirectory = file("../zipReleaseToTestTeam")
+
+    doLast {
+        println("Executando a tarefa 'zipReleaseToTestTeam': Compactando conteudo em 'zipReleaseToTestTeam.zip'.")
+    }
+}
+
+task generateRelease {
+    dependsOn = ["build", "test"]
+    finalizedBy = ["copyBuild", "zipReleaseToTestTeam", "deleteBuild"]
+
+    doLast {
+        println("Executando a tarefa 'generateRelease': Gerando a versao de release completa.")
+    }
+}
