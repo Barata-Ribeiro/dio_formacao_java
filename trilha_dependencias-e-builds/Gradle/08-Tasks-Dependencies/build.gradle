@@ -1,0 +1,77 @@
+task turnOnVehicle{
+    doLast {
+        println ("turnOnVehicle")
+    }
+}
+
+task accelerateVehicle {
+    dependsOn "turnOnVehicle"
+    doLast {
+        println ("accelerateVehicle")
+    }
+}
+
+task increaseSpeed {
+    dependsOn "accelerateVehicle"
+    doLast {
+        println ("increaseSpeed")
+    }
+}
+
+task afterDefaultTask {
+    dependsOn "projects"
+    doLast {
+        println "afterDefaultTask"
+    }
+}
+
+task turnOnVehicleRadio {
+    mustRunAfter "turnOnVehicle"
+    doLast {
+        println ("turnOnVehicleRadio")
+    }
+}
+
+task crazyDriving {
+    dependsOn = ["turnOnVehicleRadio", "accelerateVehicle"]
+}
+
+// Do Professor >>>>>>
+
+// task turnOnTheCar {
+//     doLast {
+//         println ("turnOnTheCar")
+//     }
+// }
+
+// task accelerateTheCar {
+//     dependsOn "turnOnTheCar"
+//     finalizedBy "speedUp"
+//     doLast {
+//         println ("accelerateTheCar")
+//     }
+// }
+
+// task taskAfterDefaultTask {
+//     dependsOn "projects"
+//     doLast {
+//         println ("taskAfterDefaultTask")
+//     }
+// }
+
+// task speedUp {
+//     doLast {
+//         println ("speedUp")
+//     }
+// }
+
+// task turnOnTheRadio {
+//     mustRunAfter "turnOnTheCar"
+//     doLast {
+//         println ("turnOnTheRadio")
+//     }
+// }
+
+// task driveCrazy {
+//     dependsOn = ["turnOnTheRadio", "accelerateTheCar"]
+// }
