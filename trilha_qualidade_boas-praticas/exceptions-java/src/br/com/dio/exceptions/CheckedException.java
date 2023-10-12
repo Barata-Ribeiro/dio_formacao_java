@@ -5,14 +5,14 @@ import java.io.*;
 
 //Imprimir um arquivo no console.
 public class CheckedException {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String nomeDoArquivo = "romance-blake-crouch.txt";
         imprimirArquivoNoConsole(nomeDoArquivo);
 
         System.out.println("Apesar da exception ou não, o programa continua...");
     }
 
-    public static void imprimirArquivoNoConsole(String nomeDoArquivo) {
+    public static void imprimirArquivoNoConsole(String nomeDoArquivo) throws IOException {
         File file = new File(nomeDoArquivo);
 
         BufferedReader br = new BufferedReader(new FileReader(file.getName()));
