@@ -24,16 +24,42 @@ public class ExceptionCustomizada_1 {
             } while (line != null);
             bw.flush();
             br.close();
+        } catch (ImpossivelAberturaDeArquivoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            ex.printStackTrace();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,
                     "Ocorreu um erro não esperado, por favor, fale com o suporte." + ex.getMessage());
             ex.printStackTrace();
         }
+
     }
 
-    public static BufferedReader lerArquivo(String nomeDoArquivo) {
-
+    public static BufferedReader lerArquivo(String nomeDoArquivo) throws ImpossivelAberturaDeArquivoException {
         File file = new File(nomeDoArquivo);
-        return new BufferedReader(new FileReader(nomeDoArquivo));
+        try {
+            return new BufferedReader(new FileReader(nomeDoArquivo));
+        } catch (FileNotFoundException e) {
+            throw new ImpossivelAberturaDeArquivoException(file.getName(), file.getPath());
+        }
     }
+}
+
+class ImpossivelAberturaDeArquivoException extends Exception {
+
+    private String nomeDoArquivo;
+    private String diretorioDoArquivo;
+
+    public ImpossivelAberturaDeArquivoException(String nomeDoArquivo, String diretorioDoArquivo) {
+        super("O arquivo " + nomeDoArquivo + " não foi encontrado no diretorio " + diretorioDoArquivo);
+        this.nomeDoArquivo = nomeDoArquivo;
+        this.diretorioDoArquivo = diretorioDoArquivo;
+    }
+
+    @Override
+    public String toString() {
+        return "ImpossivelAberturaDeArquivoException [nomeDoArquivo=" + nomeDoArquivo + ", diretorioDoArquivo="
+                + diretorioDoArquivo + "]";
+    }
+
 }
