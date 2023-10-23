@@ -1,10 +1,48 @@
 package br.com.dio.java.io.IOCharacter;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 //Faça uma cópia do arquivo “recomendacoes.txt” e agora adicione 3 recomendações de livros.
 public class Exercicio3IOCaracter {
-    public static void main(String[] args) throws IOException {
 
+    public static void copiarArquivo() throws IOException {
+        File f = new File(
+                "recomendacoes.txt");
+        String fileName = f.getName();
+
+        // FileReader r = new FileReader(fileName);
+        // BufferedReader br = new BufferedReader(r);
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String readLine = br.readLine();
+
+        String copyFileName = fileName.substring(0, fileName.indexOf(".")).concat("-copy.txt");
+        File fCopy = new File(copyFileName);
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fCopy.getName()));
+
+        do {
+            bw.write(readLine);
+            bw.newLine();
+            bw.flush();
+            readLine = br.readLine();
+        } while (!(readLine == null));
+
+        br.close();
+
+        System.out.printf("Arquivo \"%s\" copiado com sucesso! Com o tamanho '%d' bytes. \n", f.getName(), f.length());
+        System.out.printf("Arquivo \"%s\" criado com sucesso! Com o tamanho '%d' bytes.", fCopy.getName(),
+                fCopy.length());
+    }
+
+    // public static void adicionarRecomendacoesNoArquivo() {
+    // }
+
+    public static void main(String[] args) throws IOException {
+        copiarArquivo();
     }
 }
