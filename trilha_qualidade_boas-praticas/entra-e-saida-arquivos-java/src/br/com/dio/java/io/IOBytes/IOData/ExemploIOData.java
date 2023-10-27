@@ -1,7 +1,10 @@
 package br.com.dio.java.io.IOBytes.IOData;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -20,11 +23,12 @@ public class ExemploIOData {
 
         File f = new File("D:\\Armazenamento\\Documentos\\peca-de-roupa.bin");
 
+        // OutputStream os = new FileOutputStream(f.getPath());
+        // DataOutputStream dos = new DataOutputStream(os);
+
         try (PrintStream ps = new PrintStream(System.out);
                 DataOutputStream dos = new DataOutputStream(new FileOutputStream(f.getPath()));
                 Scanner scan = new Scanner(System.in)) {
-            // OutputStream os = new FileOutputStream(f.getPath());
-            // DataOutputStream dos = new DataOutputStream(os);
 
             scan.useLocale(Locale.US);
 
@@ -65,10 +69,41 @@ public class ExemploIOData {
             } while (!validInput);
 
             ps.println("Produto incluído com sucesso!");
+
+            ps.printf("O arquivo %s foi criado/editado. Possui %d bytes e está no diretório '%s'.\n",
+                    f.getName(), f.length(), f.getAbsolutePath());
+
+            lerProduto(f.getPath());
+
+            dos.close();
+            scan.close();
+            ps.close();
         }
     }
 
-    public static void lerProduto(String arquivo) {
+    public static void lerProduto(String caminhoDoArquivo) throws FileNotFoundException, IOException {
+
+        File f = new File(caminhoDoArquivo);
+
+        // InputStream is = new FileInputStream(f.getPath());
+        // DataInputStream dis = new DataInputStream(is);
+
+        try (PrintStream ps = new PrintStream(System.out);
+                DataInputStream dis = new DataInputStream(new FileInputStream(f.getPath()))) {
+
+            String nome = dis.readUTF();
+            char tamanho = dis.readChar();
+            int quantidade = dis.readInt();
+            double preco = dis.readDouble();
+
+            System.out.printf("\nNome..................: %s\n", nome);
+            System.out.printf("Tamanho...............: %s\n", tamanho);
+            System.out.printf("Quantidade............: %d\n", quantidade);
+            System.out.printf("Preço.................: %.2f\n", preco);
+            System.out.print("Total do valor das peças: " + String.format("%.2f", (quantidade * preco)));
+
+            dis.close();
+        }
     }
 
     public static void main(String[] args) throws IOException {
