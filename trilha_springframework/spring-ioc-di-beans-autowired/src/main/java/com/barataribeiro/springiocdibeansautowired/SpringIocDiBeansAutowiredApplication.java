@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.barataribeiro.springiocdibeansautowired.app.ConversorJson;
 import com.barataribeiro.springiocdibeansautowired.app.ViaCepResponse;
+import com.google.gson.Gson;
 
 @SpringBootApplication
 public class SpringIocDiBeansAutowiredApplication {
@@ -23,5 +24,10 @@ public class SpringIocDiBeansAutowiredApplication {
 			System.out.println("Dados do CEP: " + response);
 		};
 	}
+
+	// @Bean
+	// public Gson gson() {
+	// 	return new Gson();
+	// }
 
 }
