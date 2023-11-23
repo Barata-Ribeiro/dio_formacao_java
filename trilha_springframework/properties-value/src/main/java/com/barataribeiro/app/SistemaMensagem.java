@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SistemaMensagem implements CommandLineRunner {
-  private String nome = "Barata Ribeiro";
-  private String email = "contato@barataribeiro.com";
+  @Value("${nome}") // @Value("${name:NoReply-BarataRibeiro}")
+  private String nome;
+  @Value("${email}")
+  private String email;
+  @Value("${telefones}")
   private List<Long> telefones = new ArrayList<>(Arrays.asList(new Long[] { 24976581234L }));
 
   @Override
