@@ -1,4 +1,4 @@
-package com.barataribeiro.aulaspringsecurity;
+package com.barataribeiro.aulaspringsecurity.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
