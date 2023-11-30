@@ -1,3 +1,4 @@
+import com.barataribeiro.gof.facade.Facade;
 import com.barataribeiro.gof.singleton.SingletonEager;
 import com.barataribeiro.gof.singleton.SingletonLazy;
 import com.barataribeiro.gof.singleton.SingletonLazyHolder;
@@ -11,7 +12,6 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // Singleton
-
         SingletonLazy lazy = SingletonLazy.getInstance();
         System.out.println(lazy);
         lazy = SingletonLazy.getInstance();
@@ -34,7 +34,6 @@ public class App {
         System.out.println();
 
         // Strategy
-
         Comportamento normal = new ComportamentoNormal();
         Comportamento defensivo = new ComportamentoDefensivo();
         Comportamento agressivo = new ComportamentoAgressivo();
@@ -42,14 +41,20 @@ public class App {
         Robo robo = new Robo();
         robo.setComportamento(normal);
         robo.mover();
-        
+
         robo.setComportamento(defensivo);
         robo.mover();
         robo.mover();
-        
+
         robo.setComportamento(agressivo);
         robo.mover();
         robo.mover();
         robo.mover();
+
+        System.out.println();
+
+        // Facade
+        Facade facade = new Facade();
+        facade.migrarCliente("Barata Ribeiro", "21911-560");
     }
 }
