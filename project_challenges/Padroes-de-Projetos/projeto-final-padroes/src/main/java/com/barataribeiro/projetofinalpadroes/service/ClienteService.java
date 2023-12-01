@@ -3,10 +3,11 @@ package com.barataribeiro.projetofinalpadroes.service;
 import com.barataribeiro.projetofinalpadroes.model.Cliente;
 
 /**
- * Interface que define o padrão <b>Strategy</b> no domínio de cliente. Com
- * isso, se necessário, podemos ter multiplas implementações dessa mesma
+ * Interface that defines the <b>Strategy</b> standard in the client domain.
+ * With
+ * so, if necessary, we can have multiple implementations of the same
  * interface.
- * 
+ *
  * @author falvojr
  */
 public interface ClienteService {
