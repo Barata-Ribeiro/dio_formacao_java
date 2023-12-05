@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.dio.academia.digital.entity.Aluno;
+import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AlunoForm;
 import me.dio.academia.digital.entity.form.AlunoUpdateForm;
 import me.dio.academia.digital.repository.AlunoRepository;
@@ -49,6 +50,13 @@ public class AlunoServiceImpl implements IAlunoService {
   public void delete(Long id) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'delete'");
+  }
+
+  @Override
+  public List<AvaliacaoFisica> getAllAvaliacaoFisicaById(Long id) {
+    Aluno aluno = repository.findById(id).get();
+
+    return aluno.getAvaliacoes();
   }
 
 }
