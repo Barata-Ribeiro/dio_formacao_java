@@ -36,26 +36,40 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
 
   @Override
   public AvaliacaoFisica get(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'get'");
+    return repository.findById(id).get();
   }
 
   @Override
   public List<AvaliacaoFisica> getAll() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+    return repository.findAll();
   }
 
   @Override
   public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    AvaliacaoFisica avaliacaoFisica = repository.findById(id).get();
+
+    formUpdate.getPeso().ifPresent(peso -> {
+      if (peso <= 0)
+        throw new IllegalArgumentException("O peso precisa ser positivo.");
+
+      avaliacaoFisica.setPeso(peso);
+    });
+
+    formUpdate.getAltura().ifPresent(altura -> {
+      if (altura <= 0)
+        throw new IllegalArgumentException("A altura precisa ser positiva.");
+      if (altura > 0 && altura <= 150)
+        throw new IllegalArgumentException("A altura precisa ser no minimo 150.");
+
+      avaliacaoFisica.setAltura(altura);
+    });
+
+    return repository.save(avaliacaoFisica);
   }
 
   @Override
   public void delete(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    repository.deleteById(id);
   }
 
 }

@@ -1,5 +1,7 @@
 package me.dio.academia.digital.entity.form;
 
+import java.util.Optional;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AvaliacaoFisicaUpdateForm {
 
-  private double peso;
+  private Optional<Double> peso;
 
-  private double altura;
+  private Optional<Double> altura;
 }

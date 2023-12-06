@@ -1,6 +1,9 @@
 package me.dio.academia.digital.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import javax.validation.ValidationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +34,7 @@ public class AlunoServiceImpl implements IAlunoService {
 
   @Override
   public Aluno get(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'get'");
+    return repository.findById(id).get();
   }
 
   @Override
@@ -42,14 +44,35 @@ public class AlunoServiceImpl implements IAlunoService {
 
   @Override
   public Aluno update(Long id, AlunoUpdateForm formUpdate) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    Aluno aluno = repository.findById(id).get();
+
+    formUpdate.getNome().ifPresent(nome -> {
+      if (nome.length() < 3 || nome.length() > 50)
+        throw new ValidationException("Nome deve estar entre 3 e 50 caracteres.");
+
+      aluno.setNome(nome);
+    });
+
+    formUpdate.getBairro().ifPresent(bairro -> {
+      if (bairro.length() < 3 || bairro.length() > 50)
+        throw new ValidationException("Bairro deve estar entre 3 e 50 caracteres.");
+
+      aluno.setBairro(bairro);
+    });
+
+    formUpdate.getDataDeNascimento().ifPresent(dataDeNascimento -> {
+      if (dataDeNascimento.isAfter(LocalDate.now()))
+        throw new ValidationException("Data de nascimento não pode ser no futuro.");
+
+      aluno.setDataDeNascimento(dataDeNascimento);
+    });
+
+    return repository.save(aluno);
   }
 
   @Override
   public void delete(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    repository.deleteById(id);
   }
 
   @Override
