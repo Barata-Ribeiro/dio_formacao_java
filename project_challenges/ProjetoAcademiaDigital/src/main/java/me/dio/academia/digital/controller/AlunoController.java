@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.dio.academia.digital.entity.Aluno;
@@ -33,8 +34,9 @@ public class AlunoController {
   }
 
   @GetMapping
-  public List<Aluno> getAllAlunos() {
-    return service.getAll();
+  public List<Aluno> getAllAlunos(
+      @RequestParam(value = "dataDeNascimento", required = false) String dataDeNascimento) {
+    return service.getAll(dataDeNascimento);
   }
 
   @GetMapping("/{id}")

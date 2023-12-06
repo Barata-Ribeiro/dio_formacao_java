@@ -12,6 +12,7 @@ import me.dio.academia.digital.entity.Aluno;
 import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AlunoForm;
 import me.dio.academia.digital.entity.form.AlunoUpdateForm;
+import me.dio.academia.digital.infra.utils.JavaTimeUtils;
 import me.dio.academia.digital.repository.AlunoRepository;
 import me.dio.academia.digital.service.IAlunoService;
 
@@ -38,8 +39,13 @@ public class AlunoServiceImpl implements IAlunoService {
   }
 
   @Override
-  public List<Aluno> getAll() {
-    return repository.findAll();
+  public List<Aluno> getAll(String dataDeNascimento) {
+    if (dataDeNascimento == null)
+      return repository.findAll();
+    else {
+      LocalDate data = LocalDate.parse(dataDeNascimento, JavaTimeUtils.LOCAL_DATE_FORMATTER);
+      return repository.findByDataDeNascimento(data);
+    }
   }
 
   @Override
